@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+@import "tailwindcss";
+
+@layer base {
+
+  body {
+    @apply mx-auto w-full max-w-4xl px-4 md:px-6 text-center bg-cyan-900 mt-10 md:mt-20 lg:mt-40 text-white;
+  }
+
+  h1 {
+    @apply text-3xl md:text-5xl font-bold mb-6 text-center;
+  }
+
+  input {
+    @apply border w-full md:w-auto p-2 rounded;
+  }
+
+  h2 {
+    @apply text-xl md:text-2xl text-center mb-8;
+  }
+
+  img {
+    @apply w-full max-w-md h-auto object-cover rounded-xl border-4 border-white shadow-lg;
+  }
+
+  button {
+    @apply mt-4 mb-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg shadow transition w-full md:w-auto;
+  }
+
+  p {
+    @apply text-base md:text-lg mb-2;
+  }
+
+  a {
+    @apply block hover:bg-cyan-800 hover:p-2 rounded-md transition;
+  }
+
+  summary {
+    @apply bg-white text-black rounded-lg p-3 cursor-pointer font-bold;
+  }
+
+  div {
+    @apply bg-black p-4 md:p-8 lg:p-10 rounded-3xl flex flex-col;
+  }
+
+  details {
+    @apply mb-4;
+  }
+
+}
+
+@layer components {
+
+  .card {
+    @apply border border-cyan-700 rounded-2xl p-4 md:p-6 w-full;
+  }
+
+  .contenedor {
+    @apply flex flex-col lg:flex-row gap-6 bg-black rounded-2xl p-4 md:p-10 w-full max-w-7xl mx-auto;
+  }
+
+}
+
+@layer utilities {
+
+  .rotate-45-extra {
+    transform: rotate(45deg);
+  }
+
+}
+
+</style>
+</head>
+<body>
+
+  <h2>Cristian Jesus Rengifo Rengifo</h2>
+
+<div>
+
+    <div>
+        <h1>Ejercicios Funciones</h1>
+
+
+
+        <ol class="list-decimal pl-6">
+    <li>
+        <a href="./1/index.html">
+            Contar caracteres de una cadena
+        </a>
+    </li>
+
+    <li>
+        <a href="./2/index.html">
+            Recortar texto según número de caracteres
+        </a>
+    </li>
+
+    <li>
+        <a href="./3/index.html">
+            Separar texto en un array
+        </a>
+    </li>
+
+    <li>
+        <a href="./4/index.html">
+            Repetir texto X veces
+        </a>
+    </li>
+
+    <li>
+        <a href="./5/index.html">
+            Invertir una cadena de texto
+        </a>
+    </li>
+
+    <li>
+        <a href="./6/index.html">
+            Contar repeticiones de una palabra
+        </a>
+    </li>
+
+    <li>
+        <a href="./7/index.html">
+            Validar palíndromo
+        </a>
+    </li>
+
+    <li>
+        <a href="./8/index.html">
+            Eliminar patrón de caracteres
+        </a>
+    </li>
+
+    <li>
+        <a href="./9/index.html">
+            Número aleatorio entre 501 y 600
+        </a>
+    </li>
+
+    <li>
+        <a href="./10/index.html">
+            Conversión Celsius ↔ Fahrenheit
+        </a>
+    </li>
+    <li>
+    <a href="./11/index.html">
+        Conversión binario ↔ decimal
+    </a>
+</li>
+
+<li>
+    <a href="./12/index.html">
+        Calcular años transcurridos desde una fecha
+    </a>
+</li>
+
+<li>
+    <a href="./13/index.html">
+        Contar vocales y consonantes
+    </a>
+</li>
+
+<li>
+    <a href="./14/index.html">
+        Validar nombre válido
+    </a>
+</li>
+
+<li>
+    <a href="./15/index.html">
+        Validar email válido
+    </a>
+</li>
+</ol>
+    </div>
+
+</div>
+
+</body>
+</html>

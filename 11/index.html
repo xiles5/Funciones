@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+@import "tailwindcss";
+
+@layer base {
+
+  body {
+    @apply mx-auto w-full max-w-4xl px-4 md:px-6 text-center bg-cyan-900 mt-10 md:mt-20 lg:mt-40 text-white;
+  }
+
+  h1 {
+    @apply text-3xl md:text-5xl font-bold mb-6 text-center;
+  }
+
+  input {
+    @apply border w-full md:w-auto p-2 rounded;
+  }
+
+  h2 {
+    @apply text-xl md:text-2xl text-center mb-8;
+  }
+
+  img {
+    @apply w-full max-w-md h-auto object-cover rounded-xl border-4 border-white shadow-lg;
+  }
+
+  button {
+    @apply mt-4 mb-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg shadow transition w-full md:w-auto;
+  }
+
+  p {
+    @apply text-base md:text-lg mb-2;
+  }
+
+  a {
+    @apply block hover:bg-cyan-800 hover:p-2 rounded-md transition;
+  }
+
+  summary {
+    @apply bg-white text-black rounded-lg p-3 cursor-pointer font-bold;
+  }
+
+  div {
+    @apply bg-black p-4 md:p-8 lg:p-10 rounded-3xl flex flex-col;
+  }
+
+  details {
+    @apply mb-4;
+  }
+
+}
+
+@layer components {
+
+  .card {
+    @apply border border-cyan-700 rounded-2xl p-4 md:p-6 w-full;
+  }
+
+  .contenedor {
+    @apply flex flex-col lg:flex-row gap-6 bg-black rounded-2xl p-4 md:p-10 w-full max-w-7xl mx-auto;
+  }
+
+}
+
+@layer utilities {
+
+  .rotate-45-extra {
+    transform: rotate(45deg);
+  }
+
+}
+
+</style>
+</head>
+<body>
+<div>
+    <label for="numero">Introduce un número:</label>
+    <input type="number" id="numero">
+    <br>
+
+    <label for="base">Base del número (2 o 10):</label>
+    <input type="number" id="base">
+
+    <button type="button" id="apretar">Resultado</button>
+
+    <p id="resultado"></p>
+</div>
+
+<script>
+const APRETAR = document.getElementById("apretar");
+const NUMERO = document.getElementById("numero");
+const BASE = document.getElementById("base");
+const RESULTADO = document.getElementById("resultado");
+
+const miFuncion = (numero, base) => {
+
+    // Binario -> Decimal
+    if (base === 2) {
+
+        let decimal = 0;
+        let potencia = 1;
+
+        while (numero > 0) {
+            let digito = numero % 10;
+            decimal = decimal + digito * potencia;
+            potencia = potencia * 2;
+            numero = (numero - digito) / 10;
+        }
+
+        return decimal;
+    }
+
+    // Decimal -> Binario
+    if (base === 10) {
+
+        let binario = 0;
+        let posicion = 1;
+
+        while (numero > 0) {
+            let resto = numero % 2;
+            binario = binario + resto * posicion;
+            posicion = posicion * 10;
+            numero = (numero - resto) / 2;
+        }
+
+        return binario;
+    }
+
+    return "Base no válida";
+};
+
+const main = () => {
+
+    let numero = Number(NUMERO.value);
+    let base = Number(BASE.value);
+
+    let res = miFuncion(numero, base);
+
+    RESULTADO.innerHTML =
+        "El número " + numero +
+        " en base " + base +
+        " convertido es: " + res;
+};
+
+APRETAR.addEventListener("click", main);
+</script>
+
+    
+
+
+
+</body>
+</html>
