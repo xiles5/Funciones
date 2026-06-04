@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1
-    </title>
-       <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-     <style type="text/tailwindcss">
+    <title>16</title>
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
 @import "tailwindcss";
 
 @layer base {
@@ -81,34 +80,41 @@
 </head>
 <body>
     <div>
-      <form id="formulario">
-    <label for="cadena">Coloca un parrafo:</label>
-    <input type="text" id="cadena">
+    <label for="numero">Introduce uno o varios numeros:</label>
+    <input type="text" id="numero">
+    <br>
 
-<button type="submit" >Resultado</button>
-<p id="resultado"></p>
-</form>
+    <button type="button" id="apretar">Resultado</button>
+
+    <p id="resultado"></p>
 </div>
+
 <script>
-const FORMULARIO = document.getElementById("formulario");
-const CADENA = document.getElementById("cadena")
+const APRETAR = document.getElementById("apretar");
+const NUMERO = document.getElementById("numero");
 const RESULTADO = document.getElementById("resultado");
 
-const usarcadena = (cadena) => { 
-  
-return cadena.length;
+const miFuncion = (array) => {
+    let resultado = [];
+
+    for (let i = 0; i < array.length; i++) {
+        resultado.push(array[i] ** 2);
+    }
+
+    return resultado;
 };
 
-const main = (event) => {
-    event.preventDefault();
-let valor = CADENA.value;
-let resultado = usarcadena(valor);
-let res = RESULTADO.innerHTML = "El parrafo tiene : "+ resultado + " caracteres";
- return res;
+const main = () => {
+    let array = NUMERO.value.split(" ").map(Number);
 
+    let res = miFuncion(array);
+
+    RESULTADO.textContent = `[${res.join(", ")}]`;
 };
-FORMULARIO.addEventListener("submit",main);
 
+APRETAR.addEventListener("click", main);
 </script>
+
+    
 </body>
 </html>
