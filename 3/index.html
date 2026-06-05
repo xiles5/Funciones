@@ -79,18 +79,19 @@
 </style>
 </head>
 <body>
-    
+    <form id="formulario">
       <div>
     <label for="cadena">Coloca un parrafo:</label>
     <input type="text" id="cadena">
     <br>
     <label for="separador">Escribe el caracter separador:</label>
  <input type="text" id="separador">
-<button type="button" id="apretar">Resultado</button>
+<button type="submit" >Resultado</button>
 <p id="resultado"></p>
 </div>
+</form>
 <script>
-const APRETAR = document.getElementById("apretar");
+const FORMULARIO = document.getElementById("formulario");
 const CADENA = document.getElementById("cadena");
 const RESULTADO = document.getElementById("resultado");
 const SEPARADOR = document.getElementById("separador");
@@ -101,7 +102,8 @@ let joinear = palabra.join(separador);
 
 return joinear;
 };
-const main = () => {
+const main = (event) => {
+    event.preventDefault();
     let frase = CADENA.value;
 
     let sepa = SEPARADOR.value;
@@ -111,7 +113,7 @@ let resultado = RESULTADO.innerHTML = "De esta frase "+frase + " le separas con 
  return resultado;
 
 };
-APRETAR.addEventListener("click",main);
+FORMULARIO.addEventListener("submit",main);
 </script>
 </body>
 </html>

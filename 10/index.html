@@ -79,7 +79,7 @@
 </style>
 </head>
 <body>
-     
+     <form id="formulario">
       <div>
         <label for="hasta">Grados: </label>
  <input type="number" id="hasta">
@@ -87,11 +87,12 @@
     <input type="text" id="cadena">
     <br>
     
-<button type="button" id="apretar">Resultado</button>
+<button type="submit" >Resultado</button>
 <p id="resultado"></p>
 </div>
+</form>
 <script>
-const APRETAR = document.getElementById("apretar");
+const FORMULARIO = document.getElementById("formulario");
 const CADENA = document.getElementById("cadena");
 const RESULTADO = document.getElementById("resultado");
 const HASTA = document.getElementById("hasta");
@@ -108,7 +109,8 @@ const lacadena = (grado, cof) => {
     return resultado;
 };
 
-const main = () => {
+const main = (event) => {
+  event.preventDefault();
     let gra = parseFloat(HASTA.value);
     let cambio = CADENA.value.toUpperCase();
 
@@ -117,7 +119,7 @@ const main = () => {
     RESULTADO.innerHTML = res + " º" + cambio;
 };
 
-APRETAR.addEventListener("click", main);
+FORMULARIO.addEventListener("submit", main);
 </script>
 </body>
 </html>

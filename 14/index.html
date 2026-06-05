@@ -79,17 +79,18 @@
 </style>
 </head>
 <body>
+  <form id="formulario">
 <div>
     <label for="cadena">Introduce un nombre:</label>
     <input type="text" id="cadena">
 
-    <button type="button" id="apretar">Resultado</button>
+    <button type="submit" >Resultado</button>
 
     <p id="resultado"></p>
 </div>
-
+</form>
 <script>
-const APRETAR = document.getElementById("apretar");
+const FORMULARIO = document.getElementById("formulario");
 const CADENA = document.getElementById("cadena");
 const RESULTADO = document.getElementById("resultado");
 
@@ -114,8 +115,8 @@ const miFuncion = (cadena) => {
     return true;
 };
 
-const main = () => {
-
+const main = (event) => {
+event.preventDefault();
     let texto = CADENA.value;
 
     let res = miFuncion(texto);
@@ -124,7 +125,7 @@ const main = () => {
         "¿Es un nombre válido? " + res;
 };
 
-APRETAR.addEventListener("click", main);
+FORMULARIO.addEventListener("submit", main);
 </script>
 </body>
 </html>

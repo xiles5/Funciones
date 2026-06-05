@@ -79,18 +79,19 @@
 </style>
 </head>
 <body>
+  <form id="formulario">
     <div>
     <label for="numero">Introduce uno o varios numeros:</label>
     <input type="text" id="numero">
     <br>
 
-    <button type="button" id="apretar">Resultado</button>
+    <button type="submit" >Resultado</button>
 
     <p id="resultado"></p>
 </div>
-
+</form>
 <script>
-const APRETAR = document.getElementById("apretar");
+const FORMULARIO = document.getElementById("formulario");
 const NUMERO = document.getElementById("numero");
 const RESULTADO = document.getElementById("resultado");
 
@@ -104,7 +105,8 @@ const miFuncion = (array) => {
     return resultado;
 };
 
-const main = () => {
+const main = (event) => {
+  event.preventDefault();
     let array = NUMERO.value.split(" ").map(Number);
 
     let res = miFuncion(array);
@@ -112,7 +114,7 @@ const main = () => {
     RESULTADO.textContent = `[${res.join(", ")}]`;
 };
 
-APRETAR.addEventListener("click", main);
+FORMULARIO.addEventListener("submit", main);
 </script>
 
     

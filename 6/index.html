@@ -79,18 +79,19 @@
 </style>
 </head>
 <body>
-        
+        <form id="formulario">
       <div>
     <label for="cadena">Coloca un parrafo:</label>
     <input type="text" id="cadena">
     <br>
     <label for="hasta">Cuantas veces se repite la palabra: </label>
  <input type="text" id="hasta">
-<button type="button" id="apretar">Resultado</button>
+<button type="submit" >Resultado</button>
 <p id="resultado"></p>
 </div>
+</form>
 <script>
-const APRETAR = document.getElementById("apretar");
+const FORMULARIO = document.getElementById("formulario");
 const CADENA = document.getElementById("cadena");
 const RESULTADO = document.getElementById("resultado");
 const HASTA = document.getElementById("hasta");
@@ -107,7 +108,8 @@ contador ++;
 
 return  contador;
 };
-const main = () => {
+const main = (event) => {
+  event.preventDefault();
     let palabra = CADENA.value;
     let cuantos = HASTA.value;
 
@@ -119,7 +121,7 @@ let resulta = RESULTADO.innerHTML = contando;
  return resulta;
 
 };
-APRETAR.addEventListener("click",main);
+FORMULARIO.addEventListener("submit",main);
 </script>
 </body>
 </html>

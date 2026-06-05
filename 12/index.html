@@ -79,17 +79,18 @@
 </style>
 </head>
 <body>
+  <form id="formulario">
     <div>
     <label for="fecha">Introduce una fecha:</label>
     <input type="date" id="fecha">
 
-    <button type="button" id="apretar">Resultado</button>
+    <button type="submit" >Resultado</button>
 
     <p id="resultado"></p>
 </div>
-
+</form>
 <script>
-const APRETAR = document.getElementById("apretar");
+const FORMULARIO = document.getElementById("formulario");
 const FECHA = document.getElementById("fecha");
 const RESULTADO = document.getElementById("resultado");
 
@@ -110,8 +111,8 @@ const miFuncion = (fecha) => {
     return años;
 };
 
-const main = () => {
-
+const main = (event) => {
+event.preventDefault();
     let fecha = new Date(FECHA.value);
 
     let res = miFuncion(fecha);
@@ -122,7 +123,7 @@ const main = () => {
         FECHA.value;
 };
 
-APRETAR.addEventListener("click", main);
+FORMULARIO.addEventListener("submit", main);
 </script>
 </body>
 </html>

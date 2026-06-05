@@ -79,15 +79,17 @@
 </style>
 </head>
 <body>
+  <form id="formulario">
       <div>
     <label for="cadena">Coloca un parrafo para ver si es palindromo:</label>
     <input type="text" id="cadena">
 
-<button type="button" id="apretar">Resultado</button>
+<button type="submit" >Resultado</button>
 <p id="resultado"></p>
 </div>
+</form>
 <script>
-const APRETAR = document.getElementById("apretar");
+const FORMULARIO = document.getElementById("formulario");
 const CADENA = document.getElementById("cadena")
 const RESULTADO = document.getElementById("resultado");
 
@@ -109,14 +111,15 @@ booleano = true;
 };
 return booleano;
 };
-const main = () => {
+const main = (event) => {
+   event.preventDefault();
 let valor =  (CADENA.value).toUpperCase().replaceAll(" ", "");
 let resultado = usarcadena(valor);
 let res = RESULTADO.innerHTML = resultado;
  return res;
 
 };
-APRETAR.addEventListener("click",main);
+FORMULARIO.addEventListener("submit",main);
 
 </script>  
 

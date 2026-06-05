@@ -79,14 +79,15 @@
 </style>
 </head>
 <body>
-    
+    <form id="formulario">
 <div>
     
-<button type="button" id="apretar">Numero Random</button>
+<button type="submit" >Numero Random</button>
 <p id="resultado"></p>
 </div>
+</form>
 <script>
-const APRETAR = document.getElementById("apretar");
+const FORMULARIO = document.getElementById("formulario");
 const RESULTADO = document.getElementById("resultado");
 
 const lacadena = (min,max) => {
@@ -94,7 +95,8 @@ const lacadena = (min,max) => {
 
 return  Math.floor(Math.random() * (max - min + 1)) + min;
 };
-const main = () => {
+const main = (event) => {
+  event.preventDefault();
     let min = 501;
     let max = 600;
     
@@ -106,7 +108,7 @@ let resultado = RESULTADO.innerHTML = res;
  return resultado;
 
 };
-APRETAR.addEventListener("click",main);
+FORMULARIO.addEventListener("submit",main);
 </script>
 </body>
 </html>

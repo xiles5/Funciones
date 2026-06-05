@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>5</title>
+    <title>18</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-     <style type="text/tailwindcss">
+    <style type="text/tailwindcss">
 @import "tailwindcss";
 
 @layer base {
@@ -79,39 +79,60 @@
 </style>
 </head>
 <body>
-  <form id="formulario">
-     <div>
-    <label for="cadena">Coloca un parrafo:</label>
-    <input type="text" id="cadena">
 
-<button type="submit" >Resultado</button>
-<p id="resultado"></p>
-</div>
-</form>
-<script>
-const FORMULARIO = document.getElementById("formulario");
-const CADENA = document.getElementById("cadena")
-const RESULTADO = document.getElementById("resultado");
+    <form id="formulario">
+        <div>
+        <label for="cadena">
+            Introduce varios numeros:
+        </label>
+        <br>
+        <input type="text" id="cadena" >
+        <br><br>
 
-const usarcadena = (cadena) => { 
- let alreves = "";
-  for(let i = cadena.length -1 ; 0 <= i ; i --){
-    alreves +=  cadena[i];
-    
-  }; 
-return alreves;
-};
+        <button type="submit">Resultado</button>
+   
 
-const main = (event) => {
-  event.preventDefault();
-let valor = CADENA.value;
-let resultado = usarcadena(valor);
-let res = RESULTADO.innerHTML = valor + " al reves seria "+ resultado ;
- return res;
+    <p id="resultado"></p>
+    </div>
+ </form>
+    <script>
+        const FORMULARIO = document.getElementById("formulario");
+        const CADENA = document.getElementById("cadena");
+        const RESULTADO = document.getElementById("resultado");
 
-};
-FORMULARIO.addEventListener("submit",main);
+        const miFuncion = (array) => {
 
-</script>
+            let resultado = {
+                pares: [],
+                impares: []
+            };
+
+            for (let i = 0; i < array.length; i++) {
+
+                if (array[i] % 2 === 0) {
+                    resultado.pares.push(array[i]);
+                } else {
+                    resultado.impares.push(array[i]);
+                }
+            }
+
+            return resultado;
+        };
+
+        const main = (event) => {
+            event.preventDefault();
+
+            let numeros = CADENA.value.split("").map(Number);
+
+            let res = miFuncion(numeros);
+
+            RESULTADO.innerHTML =
+                `Pares: [${res.pares.join(", ")}] <br>
+                 Impares: [${res.impares.join(", ")}]`;
+        };
+
+        FORMULARIO.addEventListener("submit", main);
+    </script>
+
 </body>
 </html>

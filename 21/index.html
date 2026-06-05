@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>5</title>
+    <title>21</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-     <style type="text/tailwindcss">
+    <style type="text/tailwindcss">
 @import "tailwindcss";
 
 @layer base {
@@ -79,39 +79,43 @@
 </style>
 </head>
 <body>
-  <form id="formulario">
-     <div>
-    <label for="cadena">Coloca un parrafo:</label>
+    <form id="formulario">
+  <div>
+    <label for="cadena">Introduce números:</label>
+    <br>
     <input type="text" id="cadena">
+    <br><br>
 
-<button type="submit" >Resultado</button>
-<p id="resultado"></p>
-</div>
+    <button type="submit">Resultado</button>
+
+    <p id="resultado"></p>
+  </div>
 </form>
+
 <script>
-const FORMULARIO = document.getElementById("formulario");
-const CADENA = document.getElementById("cadena")
-const RESULTADO = document.getElementById("resultado");
+  const FORMULARIO = document.getElementById("formulario");
+  const CADENA = document.getElementById("cadena");
+  const RESULTADO = document.getElementById("resultado");
 
-const usarcadena = (cadena) => { 
- let alreves = "";
-  for(let i = cadena.length -1 ; 0 <= i ; i --){
-    alreves +=  cadena[i];
-    
-  }; 
-return alreves;
-};
+  function promedio(a) {
+    let suma = 0;
 
-const main = (event) => {
-  event.preventDefault();
-let valor = CADENA.value;
-let resultado = usarcadena(valor);
-let res = RESULTADO.innerHTML = valor + " al reves seria "+ resultado ;
- return res;
+    for (let i = 0; i < a.length; i++) {
+      suma += Number(a[i]);
+    }
 
-};
-FORMULARIO.addEventListener("submit",main);
+    return suma / a.length;
+  }
 
+  FORMULARIO.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    let valores = CADENA.value.split(" ");
+
+    let resultado = promedio(valores);
+
+    RESULTADO.innerHTML = resultado;
+  });
 </script>
 </body>
 </html>

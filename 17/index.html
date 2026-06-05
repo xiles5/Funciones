@@ -3,9 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>17</title>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+@import "tailwindcss";
+
+@layer base {
+
+  body {
+    @apply mx-auto w-full max-w-4xl px-4 md:px-6 text-center bg-cyan-900 mt-10 md:mt-20 lg:mt-40 text-white;
+  }
+
+  h1 {
+    @apply text-3xl md:text-5xl font-bold mb-6 text-center;
+  }
+
+  input {
+    @apply border w-full md:w-auto p-2 rounded;
+  }
+
+  h2 {
+    @apply text-xl md:text-2xl text-center mb-8;
+  }
+
+  img {
+    @apply w-full max-w-md h-auto object-cover rounded-xl border-4 border-white shadow-lg;
+  }
+
+  button {
+    @apply mt-4 mb-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg shadow transition w-full md:w-auto;
+  }
+
+  p {
+    @apply text-base md:text-lg mb-2;
+  }
+
+  a {
+    @apply block hover:bg-cyan-800 hover:p-2 rounded-md transition;
+  }
+
+  summary {
+    @apply bg-white text-black rounded-lg p-3 cursor-pointer font-bold;
+  }
+
+  div {
+    @apply bg-black p-4 md:p-8 lg:p-10 rounded-3xl flex flex-col;
+  }
+
+  details {
+    @apply mb-4;
+  }
+
+}
+
+@layer components {
+
+  .card {
+    @apply border border-cyan-700 rounded-2xl p-4 md:p-6 w-full;
+  }
+
+  .contenedor {
+    @apply flex flex-col lg:flex-row gap-6 bg-black rounded-2xl p-4 md:p-10 w-full max-w-7xl mx-auto;
+  }
+
+}
+
+@layer utilities {
+
+  .rotate-45-extra {
+    transform: rotate(45deg);
+  }
+
+}
+
+</style>
 </head>
+
 <body>
-    
+
+<form id="formulario">
+    <div>
+        <label for="cadena">
+            Introduce números separados por comas:
+        </label>
+
+        <br><br>
+
+        <input type="text" id="cadena" placeholder="Ej: 1,4,5,99,-60">
+
+        <br>
+
+        <button type="submit">Calcular</button>
+
+        <p id="resultado"></p>
+    </div>
+</form>
+
+<script>
+    const FORMULARIO = document.getElementById("formulario");
+    const CADENA = document.getElementById("cadena");
+    const RESULTADO = document.getElementById("resultado");
+
+    // Función que devuelve [máximo, mínimo]
+    const miFuncion = (array) => {
+        return [Math.max(...array), Math.min(...array)];
+    };
+
+    const main = (event) => {
+        event.preventDefault();
+
+        // Convertir string a array de números correctamente
+        let numeros = CADENA.value
+            .split(",")
+            .map(num => Number(num.trim()))
+            .filter(num => !isNaN(num));
+
+        if (numeros.length === 0) {
+            RESULTADO.innerHTML = "Introduce números válidos.";
+            return;
+        }
+
+        let res = miFuncion(numeros);
+
+        RESULTADO.innerHTML = `
+            Máximo: ${res[0]} <br>
+            Mínimo: ${res[1]}
+        `;
+    };
+
+    FORMULARIO.addEventListener("submit", main);
+</script>
+
 </body>
 </html>
