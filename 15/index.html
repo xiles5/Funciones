@@ -100,36 +100,37 @@ const miFuncion = (cadena) => {
     let arroba = -1;
     let punto = -1;
     let contadorArrobas = 0;
+    let valido = true;
 
-    for(let i = 0; i < cadena.length; i++){
+    for (let i = 0; i < cadena.length; i++) {
 
-        if(cadena[i] === "@"){
+        if (cadena[i] === "@") {
             contadorArrobas++;
             arroba = i;
         }
 
-        if(cadena[i] === "."){
+        if (cadena[i] === ".") {
             punto = i;
         }
     }
 
-    if(contadorArrobas !== 1){
-        return false;
+    if (contadorArrobas !== 1) {
+        valido = false;
     }
 
-    if(arroba <= 0){
-        return false;
+    if (arroba <= 0) {
+        valido = false;
     }
 
-    if(punto <= arroba + 1){
-        return false;
+    if (punto <= arroba + 1) {
+        valido = false;
     }
 
-    if(punto >= cadena.length - 2){
-        return false;
+    if (punto >= cadena.length - 2) {
+        valido = false;
     }
 
-    return true;
+    return valido;
 };
 
 const main = (event) => {
