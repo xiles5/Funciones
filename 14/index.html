@@ -96,23 +96,25 @@ const RESULTADO = document.getElementById("resultado");
 
 const miFuncion = (cadena) => {
 
+    let valido = true;
+
     for (let i = 0; i < cadena.length; i++) {
 
         let letra = cadena[i];
 
         if (
-            (letra >= "a" && letra <= "z") ||
-            (letra >= "A" && letra <= "Z") ||
-            letra === " " ||
-            letra === "'"
+            !(
+                (letra >= "a" && letra <= "z") ||
+                (letra >= "A" && letra <= "Z") ||
+                letra === " " ||
+                letra === "'"
+            )
         ) {
-            continue;
-        } else {
-            return false;
+            valido = false;
         }
     }
 
-    return true;
+    return valido;
 };
 
 const main = (event) => {
